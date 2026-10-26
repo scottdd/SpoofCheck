@@ -440,5 +440,14 @@ await test("Microsoft AR still trusted when Microsoft is the recipient (M365 inb
     assert.equal(r.confirm.spf.source.type, "ar");
 });
 
+await test("manifest defines browser_specific_settings.gecko id, strict_min_version, and strict_max_version", async () => {
+    const { readFileSync } = await import("node:fs");
+    const m = JSON.parse(readFileSync(new URL("../src/manifest.json", import.meta.url)));
+    assert.ok(m.browser_specific_settings && m.browser_specific_settings.gecko, "missing browser_specific_settings.gecko");
+    assert.equal(m.browser_specific_settings.gecko.id, "receivedheaderinspector-en@dowlen.net");
+    assert.equal(m.browser_specific_settings.gecko.strict_min_version, "128.0");
+    assert.equal(m.browser_specific_settings.gecko.strict_max_version, "160.*");
+});
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
