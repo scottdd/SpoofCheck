@@ -1,20 +1,22 @@
-# Received Header Inspector (EN)
+# SpoofCheck — Sender & Header Inspector
 
-English-first fork of the Thunderbird add-on **ReceivedHeaderInspector** by **Olivier Poujade (Olivier P.)**.
+Thunderbird and Betterbird add-on that verifies who an email is really from by inspecting `Received` hops, `Authentication-Results`, SPF, DKIM, DMARC, and reverse DNS.
+
+*(Formerly **ReceivedHeaderInspector-EN**)* — English-first fork and evolution of the Thunderbird add-on **ReceivedHeaderInspector** by **Olivier Poujade (Olivier P.)**.
 Original project: https://github.com/PoujadeOlivier/ReceivedHeaderInspector
 (listed on addons.thunderbird.net under the MIT/X11 license). All credit for the original idea and the first versions goes to the original author.
 
-Works in Thunderbird 128+ and Betterbird.
+Works in Thunderbird 128+ (`128.0` – `160.*`) and Betterbird.
 
 ## Download and install
-1. Download the latest `.xpi` from the [Releases page](https://github.com/scottdd/ReceivedHeaderInspector-EN/releases/latest).
+1. Download the latest `.xpi` (`spoofcheck-1.7.0-tb.xpi`) from the [Releases page](https://github.com/scottdd/SpoofCheck/releases/latest).
 2. In Thunderbird/Betterbird open **Add-ons and Themes**, click the gear menu, choose **Install Add-on From File**, and pick the `.xpi`.
 3. Approve the permissions (reading the displayed message, and DNS-over-HTTPS access to the resolvers listed below).
 
-Installing a newer version over an older one updates it in place. The add-on ID is `receivedheaderinspector-en@dowlen.net`, so it can sit next to the original add-on.
+Installing a newer version over an older one (including earlier `ReceivedHeaderInspector-EN` releases) updates it seamlessly in place. The add-on ID remains `receivedheaderinspector-en@dowlen.net`, so existing installations upgrade automatically and it can sit next to the original French add-on.
 
 ## What it does
-Open a message and click the add-on's button in the message toolbar. The popup answers one question: *is this message really from who it says it is?* It is organized into three sections:
+Open a message and click the **SpoofCheck** button in the message toolbar. The popup answers one question: *is this message really from who it says it is?* It is organized into three sections:
 
 - **Claim** shows what the message claims: Subject, From (name, address, domain), Return-Path domain, DKIM signing domain(s) (`d=`), the handoff server (HELO name and IP of the server that delivered the message to your mail server) and the Sender/X-Sender header.
 - **Confirm** gives a pass/fail badge for each claim: SPF, DKIM, DMARC (including alignment with the From domain and the published policy) and reverse DNS of the handoff IP, forward-confirmed against the HELO name. Each row says where the result came from.
@@ -53,9 +55,10 @@ An internal message between two users of the same Microsoft 365 tenant. It never
 Own checks use DNS over HTTPS with the JSON API, trying these resolvers in order and falling back on timeout (3 s), network or HTTP errors, or SERVFAIL: Cloudflare, NextDNS, AdGuard (unfiltered), DNS.SB, Google. "Domain does not exist" is treated as a real answer. Lookups send the sender's domains and the handoff IP to the resolver that answers. If your mail server supplies a trusted `Authentication-Results` header, little or nothing needs to be looked up.
 
 ## Languages
-English is the default UI language (WebExtension i18n); the original French strings are in `_locales/fr`. More languages are planned, see [TODO.md](TODO.md).
+English is the default UI language (WebExtension i18n); French strings are in `_locales/fr`. More languages are planned, see [TODO.md](TODO.md).
 
 ## Versions
+- **1.7.0:** rebranded from `ReceivedHeaderInspector-EN` to **SpoofCheck — Sender & Header Inspector** (`SpoofCheck` toolbar button) with a new high-contrast vector & multi-size PNG Header Inspector Loupe icon (`16px`–`128px`, readable on both dark and light toolbars). Keeps add-on ID `receivedheaderinspector-en@dowlen.net` for seamless in-place upgrades.
 - **1.6.7:** declare explicit `strict_max_version` (`160.*`) alongside `strict_min_version` (`128.0`) in `browser_specific_settings.gecko` for Thunderbird/Betterbird add-on compatibility checks.
 - **1.6.6:** fix: DKIM/DMARC no longer shown as "none" (or a false untrusted-header warning) on Microsoft 365 mail relayed to a non-Microsoft server; Microsoft's pre-signing `mx.microsoft.com` Authentication-Results stamp is now treated as an upstream stamp and ignored.
 - **1.6.5:** fix: Exchange's `AuthAs: Internal` stamp on mail relayed outbound by Microsoft 365 no longer triggers a false "Suspicious"; the stamp now only matters for all-Microsoft (internal) delivery paths.
@@ -72,7 +75,7 @@ node test/run-tests.js
 ```
 Build the installable package (the manifest must be at the top level of the zip):
 ```
-cd src && python3 -m zipfile -c ../dist/receivedheaderinspector-en-<version>-tb.xpi .
+cd src && python3 -m zipfile -c ../dist/spoofcheck-<version>-tb.xpi .
 ```
 Documentation screenshots are rendered with `test/screenshot.py` (Playwright and Chrome, mocked mail data). Planned work is tracked in [TODO.md](TODO.md).
 

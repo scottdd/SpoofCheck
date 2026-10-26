@@ -1,12 +1,12 @@
 {
   "extName": {
-    "message": "Received Header Inspector (EN)"
+    "message": "SpoofCheck — Sender & Header Inspector"
   },
   "extDescription": {
-    "message": "Shows who an email claims to be from, checks those claims (SPF, DKIM, DMARC, reverse DNS) and gives a verdict, to help detect spoofing."
+    "message": "SpoofCheck shows who an email claims to be from, verifies those claims via SPF, DKIM, DMARC, reverse DNS, and Received headers, and gives a clear spoofing verdict."
   },
   "actionTitle": {
-    "message": "Details"
+    "message": "SpoofCheck"
   },
   "sectionClaim": {
     "message": "Claim"

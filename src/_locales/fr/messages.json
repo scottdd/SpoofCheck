@@ -1,12 +1,12 @@
 {
   "extName": {
-    "message": "ReceivedHeaderInspector"
+    "message": "SpoofCheck — Vérificateur d'expéditeur et d'en-têtes"
   },
   "extDescription": {
-    "message": "Affiche l'expéditeur annoncé d'un e-mail, vérifie ces informations (SPF, DKIM, DMARC, DNS inverse) et donne un verdict, pour aider à détecter l'usurpation d'identité."
+    "message": "SpoofCheck affiche l'expéditeur annoncé d'un e-mail, vérifie ces informations (SPF, DKIM, DMARC, DNS inverse et en-têtes Received) et donne un verdict pour détecter l'usurpation d'identité."
   },
   "actionTitle": {
-    "message": "Détails"
+    "message": "SpoofCheck"
   },
   "sectionClaim": {
     "message": "Annoncé"

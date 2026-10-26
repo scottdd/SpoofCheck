@@ -2,8 +2,8 @@
     "manifest_version": 2,
     "name": "__MSG_extName__",
     "description": "__MSG_extDescription__",
-    "version": "1.6.7",
-    "author": "Olivier P. (original author); English fork by Scott Dowlen",
+    "version": "1.7.0",
+    "author": "Olivier P. (original author); SpoofCheck fork by Scott Dowlen",
     "default_locale": "en",
     "browser_specific_settings": {
         "gecko": {
@@ -15,7 +15,13 @@
     "message_display_action": {
         "default_popup": "messagePopup/popup.html",
         "default_title": "__MSG_actionTitle__",
-        "default_icon": "images/bouclier-32px.png"
+        "default_icon": {
+            "16": "images/icon-16.png",
+            "32": "images/icon-32.png",
+            "48": "images/icon-48.png",
+            "64": "images/icon-64.png",
+            "128": "images/icon-128.png"
+        }
     },
     "permissions": [
         "messagesRead",
@@ -26,8 +32,10 @@
         "https://dns.google/*"
     ],
     "icons": {
-        "64": "images/bouclier-64px.png",
-        "32": "images/bouclier-32px.png",
-        "16": "images/bouclier-16px.png"
+        "16": "images/icon-16.png",
+        "32": "images/icon-32.png",
+        "48": "images/icon-48.png",
+        "64": "images/icon-64.png",
+        "128": "images/icon-128.png"
     }
 }

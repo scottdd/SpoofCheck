@@ -161,7 +161,7 @@ async function main() {
         renderConfirm(result.confirm);
         renderVerdict(result.verdict);
     } catch (e) {
-        console.error("Received Header Inspector:", e);
+        console.error("SpoofCheck:", e);
         const box = $("verdict");
         box.className = "verdict pending";
         box.textContent = t("errorGeneric", String(e?.message || e));

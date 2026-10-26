@@ -1,3 +1,8 @@
+### Version 1.7.0 (SpoofCheck — formerly ReceivedHeaderInspector-EN)
+- Rebranded from `ReceivedHeaderInspector-EN` to **SpoofCheck — Sender & Header Inspector** (`SpoofCheck` message toolbar button) while keeping add-on ID `receivedheaderinspector-en@dowlen.net` for seamless in-place updates.
+- New high-contrast Header Inspector Loupe icon (`images/icon.svg` and `16px`, `32px`, `48px`, `64px`, `128px` PNGs) designed for both dark and light Thunderbird/Betterbird toolbars.
+- Preserves full attribution to Olivier Poujade's original MIT-licensed `ReceivedHeaderInspector`.
+
 ### Version 1.6.7 (English fork)
 - Manifest: declare explicit `strict_max_version` (`160.*`) alongside `strict_min_version` (`128.0`) in `browser_specific_settings.gecko` so Thunderbird/Betterbird compatibility checks verify version bounds.
 

@@ -449,5 +449,23 @@ await test("manifest defines browser_specific_settings.gecko id, strict_min_vers
     assert.equal(m.browser_specific_settings.gecko.strict_max_version, "160.*");
 });
 
+await test("SpoofCheck v1.7.0 manifest icons and locale messages are valid and present", async () => {
+    const { readFileSync, existsSync } = await import("node:fs");
+    const m = JSON.parse(readFileSync(new URL("../src/manifest.json", import.meta.url)));
+    assert.equal(m.version, "1.7.0");
+    for (const sz of ["16", "32", "48", "64", "128"]) {
+        assert.equal(m.icons[sz], `images/icon-${sz}.png`);
+        assert.equal(m.message_display_action.default_icon[sz], `images/icon-${sz}.png`);
+        assert.ok(existsSync(new URL(`../src/images/icon-${sz}.png`, import.meta.url)), `missing icon-${sz}.png`);
+    }
+    assert.ok(existsSync(new URL("../src/images/icon.svg", import.meta.url)), "missing icon.svg");
+    const en = JSON.parse(readFileSync(new URL("../src/_locales/en/messages.json", import.meta.url)));
+    const fr = JSON.parse(readFileSync(new URL("../src/_locales/fr/messages.json", import.meta.url)));
+    assert.equal(en.extName.message, "SpoofCheck — Sender & Header Inspector");
+    assert.equal(en.actionTitle.message, "SpoofCheck");
+    assert.equal(fr.extName.message, "SpoofCheck — Vérificateur d'expéditeur et d'en-têtes");
+    assert.equal(fr.actionTitle.message, "SpoofCheck");
+});
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

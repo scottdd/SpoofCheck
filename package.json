@@ -1,1 +1,1 @@
-{ "name": "receivedheaderinspector-en", "private": true, "type": "module", "scripts": { "test": "node test/run-tests.js" } }
+{ "name": "spoofcheck", "version": "1.7.0", "private": true, "type": "module", "scripts": { "test": "node test/run-tests.js" } }
